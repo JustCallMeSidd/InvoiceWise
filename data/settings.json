@@ -1,0 +1,20 @@
+{
+  "apiKey": "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",
+  "modelName": "google/gemma-4-26b-a4b-it:free",
+  "businessName": "",
+  "businessGSTIN": "",
+  "businessAddress": "",
+  "businessStateCode": "",
+  "businessState": "",
+  "businessEmail": "",
+  "businessPhone": "",
+  "businessPAN": "",
+  "businessWebsite": "",
+  "businessBankName": "",
+  "businessBankAcc": "",
+  "businessBankIFSC": "",
+  "businessLogoBase64": "",
+  "invoicePrefix": "INV",
+  "invoiceTerms": "Payment due within 30 days of invoice date.",
+  "invoiceNotes": "Thank you for your business!"
+}

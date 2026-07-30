@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/png" href="/logo.png" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>InvoiceWise — Professional GST Billing</title>
+  <meta name="description" content="Professional GST-compliant billing, invoicing and product management. Generate A4 invoices, manage customers, track revenue." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="logo-area" id="logo-area">
+        <div class="logo-placeholder" id="logo-placeholder">
+          <img src="/logo.png" alt="InvoiceWise Logo" id="sidebar-logo-img" />
+        </div>
+        <div class="logo-text">
+          <span class="logo-brand">InvoiceWise</span>
+          <span class="logo-tagline">GST Billing</span>
+        </div>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-group-label">Overview</div>
+      <button class="nav-item active" data-page="dashboard" id="nav-dashboard">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+        <span>Dashboard</span>
+      </button>
+
+      <div class="nav-group-label">Billing</div>
+      <button class="nav-item" data-page="invoices" id="nav-invoices">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        <span>Invoices</span>
+        <span class="nav-badge" id="invoice-count-badge">0</span>
+      </button>
+      <button class="nav-item" data-page="create-invoice" id="nav-create-invoice">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+        <span>New Invoice</span>
+      </button>
+      <button class="nav-item" data-page="customers" id="nav-customers">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <span>Customers</span>
+        <span class="nav-badge" id="customer-count-badge">0</span>
+      </button>
+
+      <div class="nav-group-label">Catalog</div>
+      <button class="nav-item" data-page="products" id="nav-products">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+        <span>Products</span>
+        <span class="nav-badge" id="product-count-badge">0</span>
+      </button>
+      <button class="nav-item" data-page="add-product" id="nav-add-product">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        <span>Add Product</span>
+      </button>
+
+      <div class="nav-group-label">Intelligence</div>
+      <button class="nav-item" data-page="ai-assistant" id="nav-ai">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <span>AI Assistant</span>
+        <span class="nav-badge ai-badge">AI</span>
+      </button>
+      <button class="nav-item" data-page="gst-info" id="nav-gst">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <span>GST Reference</span>
+      </button>
+    </nav>
+
+    <div class="sidebar-footer">
+      <button class="settings-btn" id="open-settings">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        <span>Settings</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main content -->
+  <main class="main-content" id="main-content">
+    <!-- Top bar -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="hamburger" id="hamburger">
+          <span></span><span></span><span></span>
+        </button>
+        <div class="breadcrumb" id="breadcrumb">Dashboard</div>
+      </div>
+      <div class="topbar-right">
+        <button class="topbar-action-btn" id="new-invoice-quick-btn" onclick="navigateTo('create-invoice')" title="New Invoice">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+          New Invoice
+        </button>
+        <div class="gst-compliance-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          GST Compliant
+        </div>
+      </div>
+    </header>
+
+    <!-- Pages -->
+    <div class="page active" id="page-dashboard"></div>
+    <div class="page" id="page-invoices"></div>
+    <div class="page" id="page-create-invoice"></div>
+    <div class="page" id="page-customers"></div>
+    <div class="page" id="page-add-customer"></div>
+    <div class="page" id="page-products"></div>
+    <div class="page" id="page-add-product"></div>
+    <div class="page" id="page-ai-assistant"></div>
+    <div class="page" id="page-gst-info"></div>
+  </main>
+
+  <!-- Settings Modal -->
+  <div class="modal-overlay" id="settings-modal">
+    <div class="modal modal-lg">
+      <div class="modal-header">
+        <h2>Settings</h2>
+        <button class="modal-close" id="close-settings">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Tabs -->
+        <div class="settings-tabs">
+          <button class="settings-tab active" data-tab="business">Business Profile</button>
+          <button class="settings-tab" data-tab="bank">Bank &amp; Invoice</button>
+          <button class="settings-tab" data-tab="ai">AI Configuration</button>
+          <button class="settings-tab" data-tab="logo">Logo</button>
+        </div>
+
+        <!-- Business Profile Tab -->
+        <div class="settings-tab-content active" id="tab-business">
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="s-business-name">Business Name *</label>
+              <input type="text" id="s-business-name" placeholder="Your Company Pvt. Ltd." />
+            </div>
+            <div class="form-group">
+              <label for="s-business-pan">PAN Number</label>
+              <input type="text" id="s-business-pan" placeholder="AAAPZ1234C" maxlength="10" class="font-mono" />
+            </div>
+            <div class="form-group">
+              <label for="s-business-gstin">GSTIN *</label>
+              <input type="text" id="s-business-gstin" placeholder="27AAAPZ1234C1ZV" maxlength="15" class="font-mono" />
+              <span class="field-hint">15-digit GST Identification Number</span>
+            </div>
+            <div class="form-group">
+              <label for="s-business-state">State / UT</label>
+              <select id="s-business-state"></select>
+            </div>
+            <div class="form-group full-width">
+              <label for="s-business-address">Registered Address</label>
+              <textarea id="s-business-address" rows="2" placeholder="Full registered address including city, state, PIN"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="s-business-email">Email</label>
+              <input type="email" id="s-business-email" placeholder="billing@company.com" />
+            </div>
+            <div class="form-group">
+              <label for="s-business-phone">Phone</label>
+              <input type="tel" id="s-business-phone" placeholder="+91 98765 43210" />
+            </div>
+            <div class="form-group full-width">
+              <label for="s-business-website">Website</label>
+              <input type="url" id="s-business-website" placeholder="https://www.yourcompany.com" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Bank & Invoice Tab -->
+        <div class="settings-tab-content" id="tab-bank">
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="s-bank-name">Bank Name</label>
+              <input type="text" id="s-bank-name" placeholder="State Bank of India" />
+            </div>
+            <div class="form-group">
+              <label for="s-bank-acc">Account Number</label>
+              <input type="text" id="s-bank-acc" placeholder="000123456789" class="font-mono" />
+            </div>
+            <div class="form-group">
+              <label for="s-bank-ifsc">IFSC Code</label>
+              <input type="text" id="s-bank-ifsc" placeholder="SBIN0001234" class="font-mono" maxlength="11" />
+            </div>
+            <div class="form-group">
+              <label for="s-invoice-prefix">Invoice Number Prefix</label>
+              <input type="text" id="s-invoice-prefix" placeholder="INV" maxlength="10" />
+              <span class="field-hint">e.g. INV → INV/2025-26/0001</span>
+            </div>
+            <div class="form-group full-width">
+              <label for="s-invoice-terms">Default Terms &amp; Conditions</label>
+              <textarea id="s-invoice-terms" rows="3" placeholder="Payment due within 30 days of invoice date."></textarea>
+            </div>
+            <div class="form-group full-width">
+              <label for="s-invoice-notes">Default Notes</label>
+              <textarea id="s-invoice-notes" rows="2" placeholder="Thank you for your business!"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- AI Tab -->
+        <div class="settings-tab-content" id="tab-ai">
+          <div class="form-grid-2">
+            <div class="form-group full-width">
+              <label for="s-api-key">OpenRouter API Key</label>
+              <div class="input-with-toggle">
+                <input type="password" id="s-api-key" placeholder="sk-or-v1-..." class="font-mono" />
+                <button class="toggle-visibility" id="toggle-api-key" type="button">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                </button>
+              </div>
+              <span class="field-hint">Get your key at <a href="https://openrouter.ai" target="_blank" style="color:var(--accent-primary-light)">openrouter.ai</a></span>
+            </div>
+            <div class="form-group full-width">
+              <label for="s-model-name">Model</label>
+              <input type="text" id="s-model-name" placeholder="google/gemma-4-26b-a4b-it:free" class="font-mono" />
+              <span class="field-hint">Any OpenRouter model ID. Free models: google/gemma-4-26b-a4b-it:free, mistralai/mistral-7b-instruct:free</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Logo Tab -->
+        <div class="settings-tab-content" id="tab-logo">
+          <div class="logo-upload-area" id="logo-upload-area">
+            <input type="file" id="logo-file-input" accept="image/*" hidden />
+            <div class="logo-upload-preview" id="logo-upload-preview">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="32" height="32"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              <p>Click to upload your company logo</p>
+              <span>PNG, JPG, SVG up to 5MB · Will appear on all invoices</span>
+            </div>
+          </div>
+          <button class="btn btn-ghost" style="margin-top:10px;font-size:0.78rem" id="remove-logo-btn">Remove logo</button>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-ghost" id="replay-tour-btn" style="margin-right:auto;font-size:0.78rem">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          Replay Welcome Tour
+        </button>
+        <button class="btn btn-ghost" id="cancel-settings">Cancel</button>
+        <button class="btn btn-primary" id="save-settings">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+          Save Settings
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Delete Confirm Modal -->
+  <div class="modal-overlay" id="delete-modal">
+    <div class="modal modal-sm">
+      <div class="modal-header">
+        <h2 id="delete-modal-title">Confirm Delete</h2>
+        <button class="modal-close" id="close-delete-modal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="delete-warning">
+          <div class="delete-warning-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="28" height="28"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <p>Are you sure you want to delete <strong id="delete-item-name">this item</strong>?</p>
+          <span id="delete-item-note">This action cannot be undone.</span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-ghost" id="cancel-delete">Cancel</button>
+        <button class="btn btn-danger" id="confirm-delete">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Animated First Launch Welcome Modal -->
+  <div class="modal-overlay" id="welcome-modal">
+    <div class="modal modal-lg welcome-card">
+      <div class="welcome-header">
+        <div class="logo-placeholder" style="width:48px;height:48px;margin:0 auto 12px">
+          <img src="/logo.png" alt="InvoiceWise Logo" />
+        </div>
+        <h2 id="welcome-title">Welcome to InvoiceWise</h2>
+        <p id="welcome-subtitle">Professional GST Billing &amp; Invoice Intelligence</p>
+      </div>
+
+      <div class="modal-body" id="welcome-body" style="padding:20px 30px">
+        <!-- Slide 1: Features Tour -->
+        <div class="tour-slide active" id="tour-slide-1">
+          <div class="tour-features-grid">
+            <div class="tour-feature-card">
+              <div class="tour-feature-icon" style="background:rgba(99,102,241,0.15);color:var(--accent-primary-light)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              </div>
+              <div class="tour-feature-title">Rule 46 GST Invoices</div>
+              <div class="tour-feature-desc">Generate pixel-perfect A4 tax invoices with CGST/SGST/IGST breakdown and instant PDF export.</div>
+            </div>
+
+            <div class="tour-feature-card">
+              <div class="tour-feature-icon" style="background:rgba(6,182,212,0.15);color:var(--accent-secondary)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+              </div>
+              <div class="tour-feature-title">Customer Directory</div>
+              <div class="tour-feature-desc">Manage B2B and B2C clients, validate 15-digit GSTINs, and auto-apply state supply rules.</div>
+            </div>
+
+            <div class="tour-feature-card">
+              <div class="tour-feature-icon" style="background:rgba(168,85,247,0.15);color:var(--accent-purple)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              </div>
+              <div class="tour-feature-title">Natural Language AI</div>
+              <div class="tour-feature-desc">Ask anything about your invoices or GST in plain English with live database context integration.</div>
+            </div>
+
+            <div class="tour-feature-card">
+              <div class="tour-feature-icon" style="background:rgba(16,185,129,0.15);color:var(--accent-success)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              </div>
+              <div class="tour-feature-title">100% Local Data</div>
+              <div class="tour-feature-desc">All your products, invoices, and company records remain safely stored on your local computer.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2: User Personalization -->
+        <div class="tour-slide" id="tour-slide-2" style="display:none">
+          <div style="max-width:440px;margin:0 auto;text-align:center">
+            <h3 style="font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:6px">Let's Personalize Your Workspace</h3>
+            <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:20px">How should InvoiceWise address you?</p>
+
+            <div class="form-group" style="text-align:left;margin-bottom:16px">
+              <label for="w-user-name">Your Name *</label>
+              <input type="text" id="w-user-name" placeholder="e.g. Siddharth" style="font-size:1rem;padding:12px 14px" />
+            </div>
+
+            <div class="form-group" style="text-align:left;margin-bottom:16px">
+              <label for="w-company-name">Company / Business Name (Optional)</label>
+              <input type="text" id="w-company-name" placeholder="e.g. Acme Innovations Pvt. Ltd." />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer" style="justify-content:space-between">
+        <div class="tour-dots">
+          <span class="tour-dot active" id="dot-1"></span>
+          <span class="tour-dot" id="dot-2"></span>
+        </div>
+        <div style="display:flex;gap:10px">
+          <button class="btn btn-ghost" id="skip-tour-btn" onclick="finishTour(true)">Skip</button>
+          <button class="btn btn-primary" id="next-tour-btn" onclick="nextTourSlide()">Next →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <script src="app.js"></script>
+  <script src="invoice-print.js"></script>
+</body>
+</html>

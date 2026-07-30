@@ -1580,10 +1580,12 @@ async function finishTour(skipped = false) {
   $('#welcome-modal')?.classList.remove('open');
   const userName = $('#w-user-name')?.value.trim();
   const companyName = $('#w-company-name')?.value.trim();
+  const apiKey = $('#w-api-key')?.value.trim();
 
   const updates = { firstLaunchCompleted: true };
   if (!skipped && userName) updates.userName = userName;
   if (!skipped && companyName && !state.settings.businessName) updates.businessName = companyName;
+  if (!skipped && apiKey) updates.apiKey = apiKey;
 
   try {
     await api('PUT', '/api/settings', updates);

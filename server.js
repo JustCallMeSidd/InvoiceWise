@@ -23,7 +23,7 @@ initFile(PRODUCTS_FILE,  { products: [], lastUpdated: new Date().toISOString() }
 initFile(CUSTOMERS_FILE, { customers: [], lastUpdated: new Date().toISOString() });
 initFile(INVOICES_FILE,  { invoices: [], lastInvoiceSeq: 0, lastUpdated: new Date().toISOString() });
 initFile(SETTINGS_FILE, {
-  apiKey: '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',
+  apiKey: '',
   modelName: 'google/gemma-4-26b-a4b-it:free',
   businessName: '',
   businessGSTIN: '',
